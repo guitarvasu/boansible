@@ -1,0 +1,29 @@
+---
+- hosts: client
+  sudo: yes
+  tasks:
+        - name: Installing HTTPD
+          yum:
+                name: httpd
+                state: latest
+        - name: Hosting WebSite
+          file:
+                state: touch
+                dest: /var/www/html/index.html
+        - name: Copy Index Page
+          copy:
+                content: "Welcome to Apache"
+                dest: /var/www/html/index.html
+        - name: Enabling TCP Port and Service in Firewall
+          firewalld:
+                port: 80/tcp
+                state: enabled
+                permanent: yes
+        - name: Firewall Re-Load
+          service:
+                name: firewalld
+                state: reloaded
+        - name: Bounce HTTPD
+          service:
+                name: httpd
+                state: restarted

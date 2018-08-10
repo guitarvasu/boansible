@@ -1,0 +1,19 @@
+- hosts: localhost
+  sudo: yes
+  tasks:
+        - name: Create user
+          user:
+                name: ganesh
+                shell: /bin/bash
+        - name: Confirm User
+          user:
+                name: ganesh
+                state: absent
+          notify: test_one
+  handlers:
+        - name: test_one
+          service:
+                name: httpd
+                state: stopped
+
+

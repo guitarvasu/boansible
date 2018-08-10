@@ -1,0 +1,7 @@
+- hosts: localhost
+  sudo: yes
+  tasks:
+      - name: Remove user
+        user:
+            name: tanya
+            state: absent

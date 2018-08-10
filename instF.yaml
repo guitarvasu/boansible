@@ -1,0 +1,9 @@
+---
+- hosts: client
+  remote_user: ansible
+  become: yes
+  tasks:
+        - name: Installing FTP
+          yum:
+                name: ftp
+                state: latest

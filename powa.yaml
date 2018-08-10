@@ -1,0 +1,9 @@
+- hosts: local
+  sudo: yes
+  tasks:
+        - name: Download within time
+          get_url:
+                url: https://speed.hetzner.de/10GB.bin
+                dest: /var/tmp
+          async: 20
+          poll: 5

@@ -1,0 +1,23 @@
+---
+- hosts: client
+  sudo: yes
+  vars:
+        web_package: httpd
+        remote_access: telnet
+        one_more: mariadb
+  tasks:
+        - block:
+                - name: Installing Apache on Nodes
+                  yum:
+                        name: "{{ web_package }}"
+                        state: latest
+          rescue:
+                - name: Installing Telnet
+                  yum:
+                        name: "{{ remote_access }}"
+                        state: latest
+          always:
+                - name: Running Always
+                  yum:
+                        name: "{{ one_more }}"
+                        state: latest
