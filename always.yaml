@@ -1,10 +1,10 @@
 ---
 - hosts: client
   sudo: yes
-  vars:
-        web_package: httpd
-        remote_access: telnet
-        one_more: mariadb
+--  vars:
+---        web_package: httpd
+---        remote_access: telnet
+---        one_more: mariadb
   tasks:
         - block:
                 - name: Installing Apache on Nodes
