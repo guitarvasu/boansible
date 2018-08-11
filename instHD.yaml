@@ -1,0 +1,8 @@
+---
+- hosts: client
+  sudo: yes
+  tasks:
+        - name: Installing HTTPD
+          yum:
+                name: httpd
+                state: latest
