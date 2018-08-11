@@ -1,7 +1,6 @@
 ---
 - hosts: 192.168.118.130
   sudo: yes
-  vars:
   tasks:
         - block:
                 - name: Installing Apache on Nodes
